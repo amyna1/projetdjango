@@ -1,0 +1,24 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Login {% endblock title %}
+
+{% block content %}
+<!-- body -->
+
+<div class="submit-form-container">
+    {% if messages %}
+        {% for message in messages %}
+            <h3 class="error-field">{{ message }}</h3>
+        {% endfor %}
+    {% endif %}
+    <form method="POST" action="" class="submit-form" style="margin-bottom: 20px;">
+        {% csrf_token %}
+        <input class = "submit-form-text" type="email" name="email" placeholder="Email">
+        <input class = "submit-form-text" type="password" name="password" placeholder="Mot de passe">
+        <input class = "submit-form-button" type="submit" value="Login">
+    </form>
+    <a class="basic-link" href="signupf">Vous n'avez pas de compte ?</a>
+</div>
+
+{% endblock %}

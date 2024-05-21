@@ -1,0 +1,162 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Deposer {% endblock title %}
+
+{% block content %}
+<!-- body -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+<script>
+    $(function(){
+        $(document).ready(function(){
+            $('#evenclub').hide();
+            $('#evensocial').hide();
+            $('#stage').hide();
+            $('#longement').hide();
+            $('#transport').hide();
+            $('#recommandation').hide();
+        });
+    });
+
+    $(function(){
+        $('#posttype').on('change', function() {
+          if ($(this).val() === "0") {
+            $("#evenclub").show();
+          } else {
+            $("#evenclub").hide();
+          }
+          if ($(this).val() === "1") {
+            $("#evensocial").show();
+          } else {
+            $("#evensocial").hide();
+          }
+          if ($(this).val() === "2") {
+            $("#stage").show();
+          } else {
+            $("#stage").hide();
+          }
+          if ($(this).val() === "3") {
+            $("#longement").show();
+          } else {
+            $("#longement").hide();
+          }
+          if ($(this).val() === "4") {
+            $("#transport").show();
+          } else {
+            $("#transport").hide();
+          }
+          if ($(this).val() === "5") {
+            $("#recommandation").show();
+          } else {
+            $("#recommandation").hide();
+          }
+        });
+    });
+    
+    $(function(){
+    var myForm = document.getElementById('df');
+    myForm.addEventListener('submit', function () {
+        var allInputs = myForm.getElementsByTagName('input');
+    
+        for (var i = 0; i < allInputs.length; i++) {
+            var input = allInputs[i];
+        
+            if (input.name && !input.value) {
+                input.name = '';
+            }
+        }
+    });
+    });
+</script>
+
+<div class="submit-form-container" style="height: 90%;">
+  {% if messages %}
+  <div class="alert alert-danger" role="alert">
+      <ul>
+          {% for message in messages %}
+              <li>{{ message }}</li>
+          {% endfor %}
+      </ul>
+  </div>
+  {% endif %}
+    <form id="df" method="POST" action="" class="submit-form" style="margin-bottom: 20px;" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <label for="file-upload" class="submit-form-file">
+            Image
+        </label>
+
+        <input id="file-upload" type="file" name="image" placeholder="Image">
+
+        <select name="type" class = "submit-form-button" style="margin-bottom: 10px;text-align: center;">
+            <option value="0">Offre</option>
+            <option value="1">Demande</option>
+        </select>
+
+        <input class = "submit-form-text" type="date" name="date" placeholder="Date">
+
+        <select name="posttype" id="posttype" class = "submit-form-button" style="margin-bottom: 10px;text-align: center;">
+            <option disabled selected value>Choisir le type du Poste</option>
+            <option value="0">EvenClub</option>
+            <option value="1">EvenSocial</option>
+            <option value="2">Stage</option>
+            <option value="3">Longement</option>
+            <option value="4">Transport</option>
+            <option value="5">Recommandation</option>
+        </select>
+
+        <div id="evenclub" style="display: flex;flex-direction: column;">
+            <input class = "submit-form-text" type="text" name="titled" placeholder="Intitule">
+            <input class = "submit-form-text" type="text" name="description" placeholder="Description">
+            <input class = "submit-form-text" type="text" name="place" placeholder="Lieu">
+            <input class = "submit-form-text" type="text" name="contactinfo" placeholder="Contact">
+            <input class = "submit-form-text" type="text" name="club" placeholder="Club">
+        </div>
+
+        <div id="evensocial" style="display: flex;flex-direction: column;">
+            <input class = "submit-form-text" type="text" name="titled" placeholder="Intitule">
+            <input class = "submit-form-text" type="text" name="description" placeholder="Description">
+            <input class = "submit-form-text" type="text" name="place" placeholder="Lieu">
+            <input class = "submit-form-text" type="text" name="contactinfo" placeholder="Contact">
+            <input class = "submit-form-text" type="number" step="0.01" name="price" placeholder="Prix">
+        </div>
+
+        <div id="stage" style="display: flex;flex-direction: column;">
+            <select name="typeStg" id="typestage" class = "submit-form-button" style="margin-bottom: 10px;text-align: center;">
+                <option disabled selected value>Choisir le type du Stage</option>
+                <option value="1">Ouvrier</option>
+                <option value="2">Technicien</option>
+                <option value="3">PFE</option>
+            </select>
+
+            <input class = "submit-form-text" type="text" name="company" placeholder="Societe">
+            <input class = "submit-form-text" type="number" name="duration" placeholder="Duree">
+            <input class = "submit-form-text" type="text" name="subject" placeholder="Sujet">
+            <input class = "submit-form-text" type="text" name="contactinfo" placeholder="Contact">
+            <input class = "submit-form-text" type="text" name="speciality" placeholder="Specialite">
+        </div>
+
+        <div id="longement" style="display: flex;flex-direction: column;">
+            <input class = "submit-form-text" type="text" name="location" placeholder="Localisation">
+            <input class = "submit-form-text" type="text" name="description" placeholder="Description">
+            <input class = "submit-form-text" type="text" name="contactinfo" placeholder="Contact">
+        </div>
+
+        <div id="transport" style="display: flex;flex-direction: column;">
+            <input class = "submit-form-text" type="text" name="departure" placeholder="Depart">
+            <input class = "submit-form-text" type="time" name="departure_hour" placeholder="Heure de Depart">
+            <input class = "submit-form-text" type="text" name="destination" placeholder="Destination">
+            <input class = "submit-form-text" type="number" name="seats" placeholder="Nombre de Sieges">
+            <input class = "submit-form-text" type="text" name="contactinfo" placeholder="Contact">
+        </div>
+
+        <div id="recommandation" style="display: flex;flex-direction: column;">
+            <input class = "submit-form-text" type="text" name="text"  placeholder="Texte">
+        </div>
+
+        <input class = "submit-form-button" type="submit"  value="Deposer">
+    </form>
+</div>
+
+{% endblock %}

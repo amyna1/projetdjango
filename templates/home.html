@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Accueil{% endblock title %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 20px;
+        }
+
+        .navbar a {
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .navbar .navbar-nav {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar .nav-item {
+            margin-left: 20px;
+        }
+
+        .main-content {
+            margin-top: 60px; /* To prevent content overlap with fixed navbar */
+            padding: 20px;
+        }
+
+        .home-container .posts .container {
+            margin: 20px auto;
+        }
+
+        .post-image img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="navbar-brand">Student Help</a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link" style="display: flex; align-items: center;">
+                        <img src="https://th.bing.com/th?id=OIP.mqOxisTVLzbq2RZiu4g5ZgAAAA&w=176&h=176&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" alt="Logo" style="height: 20px; margin-right: 8px;">
+                        Welcome to Iset sfax
+                    </a>
+                </li>
+                
+                                <li class="nav-link" style="display: flex; align-items: center;">Projet Django <a href="#" class="nav-link"></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <div class="home-container">
+            <div class="posts">
+                {% for x in posts %}
+                {% for i in x %}
+                <div class="container m-auto">
+                    <div class="bg-white shadow rounded-md -mx-2 lg:mx-0">
+                        <div class="flex justify-between items-center px-4 py-3">
+                            <div class="flex flex-1 items-center space-x-4">
+                                <a href="#">
+                                    <div class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-0.5 rounded-full">
+                                        <img src="{% static 'assets/images/profile/defaultImage.jpg' %}" class="bg-gray-200 border border-white rounded-full w-8 h-8">
+                                    </div>
+                                </a>
+                                <span class="block capitalize font-semibold">{{ i.owner.username }}</span>
+                            </div>
+                            {% if request.user.id == i.owner.id %}
+                            <div>
+                                <a href="#"><i class="icon-feather-more-horizontal text-2xl hover:bg-gray-200 rounded-full p-2 transition -mr-1"></i></a>
+                                <div class="bg-white w-56 shadow-md mx-auto p-2 mt-12 rounded-md text-gray-500 hidden text-base border border-gray-100" uk-drop="mode: hover;pos: top-right">
+                                    <ul class="space-y-1">
+                                        <li>
+                                            <a href="delete/{{ i.id }}" class="flex items-center px-3 py-2 text-red-500 hover:bg-red-100 hover:text-red-500 rounded-md">
+                                                <i class="uil-trash-alt mr-1"></i> Delete
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <a href="postf/{{ i.id }}?type={{ i.cname }}">
+                                <div class="post-image">
+                                    {% if i.image %}
+                                    <img class="post-img" src="{{ i.image.url }}">
+                                    {% endif %}
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+<footer style="font-weight: bold;">
+    Made by <br/>
+    ----Ayouni Amina---- <br/>
+    ----Hmani Maryem----
+</footer>
+
+</html>
+{% endblock %}

@@ -1,0 +1,212 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.submit-form-container{
+    height: inherit;
+    width: inherit;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.submit-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.submit-form-text {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding: 15px;
+    width: 300px;
+    
+    margin-bottom:10px;
+    border-radius: 3px;
+    text-align: center;
+    border-color: black;
+}
+
+.submit-form-button {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    padding: 15px;
+    border-color: black;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+
+.basic-link {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    text-decoration: none;
+    color: rgb(78, 76, 76);
+}
+
+.error-field {
+    color: brown;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
+}
+
+.nav {
+    width: 100%;
+    height: 10vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap:20px;
+
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.user-atts {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 20px;
+}
+
+.att {
+    display: flex;flex-direction: column;align-items: center;justify-content: center;gap:10px;
+}
+
+.home-container {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.posts {
+    width: 100%;
+    height: 80vh;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.post {
+    box-shadow: rgba(76, 188, 233, 0.35) 0px 5px 15px;
+
+    margin: 20px;
+
+
+    min-height: 40vh;
+    width: 80vh;
+
+    border-radius: 5px;
+
+    display: flex;
+    overflow: hidden;
+}
+
+.post-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-img {
+    width: 100%;
+    height: inherit;
+}
+
+.post-actions {
+    height: 100%;
+    width: 50%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.submit-form-file {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    padding: 15px;
+    border-color: black;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 1px;
+    margin-bottom: 10px;
+    text-align: center;
+    border-radius: 3px;
+}
+
+input[type="file"] {
+    display: none;
+  }
+
+.filter-bar {
+    display: flex;
+    align-items: center;
+}
+
+.post-item {
+    gap: 30px;
+    display: flex;
+}
+
+.post-att {
+    display: flex;
+}
+
+.post-view {
+    height: 80vh;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 100px;
+}
+
+.post-v {
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 80%;
+}
+
+.post-comments {
+    width: 30%;
+    height: 50%;
+}
+
+.comments {
+    display: flex;
+    flex-direction: column;
+
+    max-width: 100%;
+    height: 40vh;
+    overflow: auto;
+    margin-bottom: 10px;
+}
+
+.cmt {
+    background-color: grey;
+    color: white;
+    padding: 20px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    width: 100%;
+    overflow-wrap: break-word;
+}
